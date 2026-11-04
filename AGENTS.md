@@ -8,6 +8,12 @@ REPO_RELATIVE_PATH: Benchmark/LIBERO-VPro-Dataset
 本地根固定为 /Users/fangzekuan/Desktop/reasearch/Code，远程根固定为 /data0/fangzekuan/Code，
 两端 repo 均使用 REPO_RELATIVE_PATH 对应的同名相对路径。
 
+GitHub 仓库和版本不从 repo 目录名猜测，也不需要单独填写 GitHub 账号：
+- 仓库 URL 自动读取本地 git remote get-url origin，URL 已包含 owner/repo。
+- 调试版本自动读取本地 git rev-parse HEAD；服务器获取 origin 各分支更新后切换到这个完整 commit，不默认写死 main。
+- 人工切换本地分支并 commit/push 后，后续调试自动跟随新的本地 HEAD。
+- 私有仓库要求服务器已有读取 origin 的 Git 凭据；认证只在缺失时处理，不把密码或 token 写进本文件。
+
 ## 人工与 Codex 的分工
 
 - 人工负责本地所有 git add、commit、push；本文件也应由人工提交。Codex 不代为提交或推送。
